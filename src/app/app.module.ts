@@ -3,7 +3,23 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import {TranslateLogHandler, TranslatorModule} from 'angular-translator';
+
 import { AppComponent } from './app.component';
+
+export class MyTLH extends TranslateLogHandler {
+  info(message: string): void {
+    if (console && console.info) {
+      console.info(message);
+    }
+  }
+
+  debug(message: string): void {
+    if (console && console.log) {
+      console.log(message);
+    }
+  }
+}
 
 @NgModule({
   declarations: [
@@ -12,9 +28,16 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    TranslatorModule.forRoot({
+      providedLanguages: ['de', 'en'],
+      defaultLanguage: 'en',
+      detectLanguage: false
+    })
   ],
-  providers: [],
+  providers: [
+    { provide: TranslateLogHandler, useClass: MyTLH }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

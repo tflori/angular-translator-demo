@@ -1,3 +1,16 @@
 <h1>
   {{title}}
 </h1>
+
+<button (click)="changeUser()">Change the user</button>
+
+<h2>Translator tests</h2>
+<h3>Using pipe</h3>
+<h4>without params</h4>
+<p>{{ 'HELLO_WORLD' | translate }}</p>
+
+<h4>with static parameter</h4>
+<p>{{ 'GREETING' | translate: { name: 'John' } }}</p>
+
+<h4>with dynamic parameters</h4>
+<p>{{ 'LOGIN' | translate: user }}</p>

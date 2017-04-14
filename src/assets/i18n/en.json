@@ -1,0 +1,5 @@
+{
+  "HELLO_WORLD": "Hello world!",
+  "GREETING": "Hello {{ name }}!",
+  "LOGIN": "[[ GREETING : name ]] Your last login was on {{ lastLogin }}"
+}
