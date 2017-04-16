@@ -1,5 +1,10 @@
 {
+  "TITLE": "Angular Translator Demo",
   "HELLO_WORLD": "Hello world!",
   "GREETING": "Hello {{ name }}!",
-  "LOGIN": "[[ GREETING : name ]] Your last login was on {{ lastLogin }}"
+  "NEW_MESSAGES": "You have {{ count }} new message{{ count == 1 ? '' : 's' }}",
+  "DATE_SHORT": "{{ (date.getMonth() + 1 < 10 ? '0' : '') + (date.getMonth() + 1) }} / {{ (date.getDate() < 10 ? '0' : '') + date.getDate() }} / {{ date.getFullYear() }}",
+  "LOGIN": "[[ GREETING : name ]] Your last login was on [[ DATE_SHORT : date=lastLogin ]]",
+  "STATUS_PENDING": "pending",
+  "STATUS_DONE": "done"
 }

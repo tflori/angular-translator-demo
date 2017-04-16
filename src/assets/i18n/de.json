@@ -1,4 +1,10 @@
 {
+  "TITLE": "Angular Translator Demo",
   "HELLO_WORLD": "Hallo Welt!",
-  "GREETING": "Hallo {{ name }}!"
+  "GREETING": "Hallo {{ name }}!",
+  "NEW_MESSAGES": "Du hast {{ count }} neue Nachricht{{ count == 1 ? '' : 'en' }}",
+  "DATE_SHORT": "{{ (date.getDate() < 10 ? '0' : '') + date.getDate() }}.{{ (date.getMonth() + 1 < 10 ? '0' : '') + (date.getMonth() + 1) }}.{{ date.getFullYear() }}",
+  "LOGIN": "[[ GREETING : name ]] Dein letzter login war am [[ DATE_SHORT : date=lastLogin ]]",
+  "STATUS_PENDING": "ausstehend",
+  "STATUS_DONE": "abgeschlossen"
 }

@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+main-menu {
+  float: left;
+  width: 300px;
+  display: block;
+}
+
+content {
+  width: 680px;
+  display: block;
+  float: left;
+}

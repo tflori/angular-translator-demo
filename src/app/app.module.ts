@@ -6,6 +6,9 @@ import { HttpModule } from '@angular/http';
 import {TranslateLogHandler, TranslatorModule} from 'angular-translator';
 
 import { AppComponent } from './app.component';
+import { MenuComponent } from '../menu/menu.component';
+import {TranslationLoaderCalendar} from '../calendar/TranslationLoader';
+import {MonthComponent} from '../calendar/months.component';
 
 export class MyTLH extends TranslateLogHandler {
   info(message: string): void {
@@ -23,7 +26,9 @@ export class MyTLH extends TranslateLogHandler {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent,
+    MonthComponent
   ],
   imports: [
     BrowserModule,
@@ -32,12 +37,18 @@ export class MyTLH extends TranslateLogHandler {
     TranslatorModule.forRoot({
       providedLanguages: ['de', 'en'],
       defaultLanguage: 'en',
-      detectLanguage: false
+      detectLanguage: true,
+      modules: {
+        calendar: {
+          loader: TranslationLoaderCalendar
+        }
+      },
     })
   ],
   providers: [
-    { provide: TranslateLogHandler, useClass: MyTLH }
+    { provide: TranslateLogHandler, useClass: MyTLH },
+    TranslationLoaderCalendar
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

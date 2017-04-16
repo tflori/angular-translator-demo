@@ -2,15 +2,39 @@
   {{title}}
 </h1>
 
-<button (click)="changeUser()">Change the user</button>
+<main-menu></main-menu>
 
-<h2>Translator tests</h2>
-<h3>Using pipe</h3>
-<h4>without params</h4>
-<p>{{ 'HELLO_WORLD' | translate }}</p>
+<content>
+  <button (click)="changeUser()">Change the user</button>
 
-<h4>with static parameter</h4>
-<p>{{ 'GREETING' | translate: { name: 'John' } }}</p>
+  <h2>Translator tests</h2>
+  <h3>Using pipe</h3>
+  <h4>without params</h4>
+  <p>{{ 'HELLO_WORLD' | translate }}</p>
 
-<h4>with dynamic parameters</h4>
-<p>{{ 'LOGIN' | translate: user }}</p>
+  <h4>with static parameter</h4>
+  <p>{{ 'GREETING' | translate: { name: 'John' } }}</p>
+  <p>{{ 'NEW_MESSAGES' | translate : { count: 42 } }}</p>
+
+  <h4>with dynamic parameters</h4>
+  <p>{{ 'LOGIN' | translate: user }}</p>
+
+  <h3 style="margin-top: 50px">Using component</h3>
+  <h4>without params</h4>
+  <p translate="HELLO_WORLD">loading...</p>
+
+  <h4>with static parameters</h4>
+  <p translate="GREETING" [translateParams]="{ name: 'John' }"></p>
+  <p translate="NEW_MESSAGES" [translateParams]="{ count: 0 }"></p>
+
+  <h4>with dynamic parameters</h4>
+  <p translate="LOGIN" [translateParams]="user"></p>
+
+  <months></months>
+
+</content>
+
+<select (change)="translatorContainer.language = $event.target.value">
+  <option value="en" [selected]="translatorContainer.language === 'en'">English</option>
+  <option value="de" [selected]="translatorContainer.language === 'de'">deutsch</option>
+</select>
