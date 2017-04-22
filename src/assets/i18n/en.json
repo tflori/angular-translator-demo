@@ -4,7 +4,14 @@
   "GREETING": "Hello {{ name }}!",
   "NEW_MESSAGES": "You have {{ count }} new message{{ count == 1 ? '' : 's' }}",
   "DATE_SHORT": "{{ (date.getMonth() + 1 < 10 ? '0' : '') + (date.getMonth() + 1) }} / {{ (date.getDate() < 10 ? '0' : '') + date.getDate() }} / {{ date.getFullYear() }}",
-  "LOGIN": "[[ GREETING : name ]] Your last login was on [[ DATE_SHORT : date=lastLogin ]]",
+  "LOGIN": "[[ GREETING : name ]] Your last login was on {{ lastLogin | date: 'MM/dd/y' }} at {{ lastLogin | date: 'jm' }} o'clock",
+  "FUN": [
+    "{{ type | random: { joke: [",
+      "'What\\'s the difference between snowmen and snowladies? Snowballs',",
+      "'How do you make holy water? You boil the hell out of it.',",
+      "'I say no to alcohol, it just doesn\\'t listen.',",
+    "] } }}"
+  ],
   "STATUS_PENDING": "pending",
   "STATUS_DONE": "done"
 }

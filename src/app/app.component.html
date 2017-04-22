@@ -30,7 +30,11 @@
   <h4>with dynamic parameters</h4>
   <p translate="LOGIN" [translateParams]="user"></p>
 
+  <h3 style="margin-top: 50px">Using another component with different provider</h3>
   <months></months>
+
+  <h3 style="margin-top: 50px">Using pipe with object parameter</h3>
+  <p>{{ 'FUN' | translate: { type: 'joke' } }}</p>
 
 </content>
 

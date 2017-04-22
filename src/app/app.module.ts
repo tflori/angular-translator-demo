@@ -1,14 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule, DatePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import {TranslateLogHandler, TranslatorModule} from 'angular-translator';
+import { TranslateLogHandler, TranslatorModule } from 'angular-translator';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from '../menu/menu.component';
-import {TranslationLoaderCalendar} from '../calendar/TranslationLoader';
-import {MonthComponent} from '../calendar/months.component';
+import { TranslationLoaderCalendar } from '../calendar/TranslationLoader';
+import { MonthComponent } from '../calendar/months.component';
+import { RandomPipe } from './RandomPipe';
 
 export class MyTLH extends TranslateLogHandler {
   info(message: string): void {
@@ -28,27 +30,31 @@ export class MyTLH extends TranslateLogHandler {
   declarations: [
     AppComponent,
     MenuComponent,
-    MonthComponent
+    MonthComponent,
+    RandomPipe,
   ],
-  imports: [
+  imports:      [
     BrowserModule,
     FormsModule,
     HttpModule,
     TranslatorModule.forRoot({
       providedLanguages: ['de', 'en'],
-      defaultLanguage: 'en',
-      detectLanguage: true,
-      modules: {
+      defaultLanguage:   'en',
+      detectLanguage:    true,
+      pipes:             [ RandomPipe ],
+      modules:           {
         calendar: {
-          loader: TranslationLoaderCalendar
-        }
+          loader: TranslationLoaderCalendar,
+        },
       },
-    })
+    }),
   ],
-  providers: [
+  providers:    [
     { provide: TranslateLogHandler, useClass: MyTLH },
-    TranslationLoaderCalendar
+    TranslationLoaderCalendar,
+    RandomPipe
   ],
-  bootstrap: [AppComponent]
+  bootstrap:    [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}
