@@ -35,10 +35,17 @@
 
   <h3 style="margin-top: 50px">Using pipe with object parameter</h3>
   <p>{{ 'FUN' | translate: { type: 'joke' } }}</p>
-
 </content>
 
-<select (change)="translatorContainer.language = $event.target.value">
-  <option value="en" [selected]="translatorContainer.language === 'en'">English</option>
-  <option value="de" [selected]="translatorContainer.language === 'de'">deutsch</option>
-</select>
+
+
+<footer>
+  <p>
+    Language:
+    <select (change)="translatorContainer.language = $event.target.value">
+      <option value="en" [selected]="translatorContainer.language === 'en'">English</option>
+      <option value="de" [selected]="translatorContainer.language === 'de'">deutsch</option>
+    </select>
+  </p>
+  <p>powered by angular@{{ version.full }}</p>
+</footer>

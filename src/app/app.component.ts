@@ -1,4 +1,4 @@
-import {ApplicationRef, Component} from '@angular/core';
+import { ApplicationRef, Component, VERSION } from '@angular/core';
 
 import {Translator, TranslatorContainer} from 'angular-translator';
 
@@ -22,6 +22,8 @@ export class AppComponent {
   public title = 'Loading...';
 
   public user = AppComponent.users[0];
+
+  public version = VERSION;
 
   public translations: object = {};
 
