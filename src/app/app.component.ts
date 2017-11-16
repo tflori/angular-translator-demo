@@ -1,4 +1,4 @@
-import { ApplicationRef, Component, VERSION } from '@angular/core';
+import { ApplicationRef, Component, Injector, VERSION } from '@angular/core';
 
 import {Translator, TranslatorContainer} from 'angular-translator';
 
@@ -27,7 +27,7 @@ export class AppComponent {
 
   public translations: object = {};
 
-  constructor(private translator: Translator, public translatorContainer: TranslatorContainer) {
+  constructor(private translator: Translator, public translatorContainer: TranslatorContainer, private injector: Injector) {
     const promises = [];
 
     // this comes from default module (assets/i18n/.json)
