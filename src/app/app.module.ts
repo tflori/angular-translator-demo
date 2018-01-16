@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule, DatePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import * as md from '@angular/material';
 
 import { TranslateLogHandler, TranslatorModule } from 'angular-translator';
 
@@ -35,6 +37,7 @@ export class MyTLH extends TranslateLogHandler {
   ],
   imports:      [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     TranslatorModule.forRoot({
@@ -48,6 +51,12 @@ export class MyTLH extends TranslateLogHandler {
         },
       },
     }),
+    md.MatToolbarModule,
+    md.MatButtonModule,
+    md.MatSidenavModule,
+    md.MatIconModule,
+    md.MatInputModule,
+    md.MatMenuModule
   ],
   providers:    [
     { provide: TranslateLogHandler, useClass: MyTLH },

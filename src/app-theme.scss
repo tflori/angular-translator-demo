@@ -1,0 +1,145 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$break-small: 396px;
+$break-large: 600px;
+$app-primary: mat-palette($mat-teal, 600);
+$app-secondary: mat-palette($mat-indigo, 500);
+$app-warn: mat-palette($mat-red, 500);
+
+$app-theme: mat-light-theme($app-primary, $app-secondary, $app-warn);
+@include angular-material-theme($app-theme);
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body, app-root, mat-sidenav-container { height: 100%; }
+
+.mat-sidenav-container {
+  background-color: #fafafa;
+}
+
+$app-toolbar-height: 56px;
+#app-wrapper {
+  height: 100%;
+}
+
+#content-wrapper {
+  padding: 20px 70px 50px;
+}
+
+#content {
+  max-width: 700px;
+}
+
+#app-toolbar {
+  position: relative;
+  z-index: 10;
+
+  &.mat-toolbar {
+    min-height: $app-toolbar-height;
+  }
+
+  .mat-toolbar-row {
+    height: $app-toolbar-height;
+
+    > mat-icon {
+      margin-right: 1rem
+    }
+  }
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-button.toolbar-button {
+  height: 64px;
+  min-width: 64px;
+
+  &:first-child {
+    margin-left: -16px;
+  }
+}
+
+.mat-toolbar {
+  small {
+    padding: 0 0.5rem;
+    position: relative;
+    top: 2px;
+    width: auto;
+  }
+
+  @media screen and (max-width: $break-large) {
+    small {
+      display: none;
+    }
+  }
+}
+
+.mat-menu-panel.sidenav {
+  min-width: 17rem;
+  margin-left: 1rem;
+}
+
+@media screen and (max-width: $break-large) {
+  .mat-button.toolbar-button {
+    height: 56px;
+    min-width: 56px;
+  }
+
+  #content-wrapper {
+    padding: 20px 20px;
+  }
+}
+
+mat-sidenav {
+  width: 18rem;
+}
+
+//.mat-menu-item {
+//  cursor: pointer;
+//  outline: 0;
+//  border: none;
+//  white-space: nowrap;
+//  overflow: hidden;
+//  text-overflow: ellipsis;
+//  display: block;
+//  line-height: 48px;
+//  height: 48px;
+//  padding: 0 16px;
+//  font-size: 16px;
+//  font-family: Roboto, "Helvetica Neue", sans-serif;
+//  text-align: left;
+//  text-decoration: none;
+//  position: relative
+//}
+
+.mat-menu-item[disabled] {
+  cursor: default
+}
+
+.mat-menu-item .mat-icon {
+  margin-right: 16px
+}
+
+button.mat-menu-item {
+  width: 100%
+}
+
+.mat-menu-ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0
+}
+
+.login-overlay {
+  position: absolute;
+  top: 56px;
+  width: 100%;
+  height: calc( 100% - 56px);
+  background: white;
+  border: none;
+}
