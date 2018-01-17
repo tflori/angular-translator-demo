@@ -1,5 +1,6 @@
 {
   "HOME": "Startseite",
   "ADMIN": "Administration",
-  "LOGOUT": "abmelden"
+  "LOGOUT": "abmelden",
+  "DISPLAY_LANGUAGE": "Anwendungssprache"
 }

@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
 
-import {provideTranslator} from 'angular-translator';
+import {provideTranslator, TranslatorContainer} from 'angular-translator';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   providers: [ provideTranslator('menu') ]
 })
-export class MenuComponent {}
+export class MenuComponent {
+  constructor(private translatorContainer: TranslatorContainer) {}
+
+  public setLanguage(lang: string) {
+    this.translatorContainer.language = lang;
+  }
+}

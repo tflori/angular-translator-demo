@@ -123,6 +123,23 @@ mat-sidenav {
   margin-right: 16px
 }
 
+nav .mat-menu-item {
+  user-select: none;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+  text-align: left;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 16px;
+  text-decoration: none;
+  position: relative;
+}
+
 button.mat-menu-item {
   width: 100%
 }
@@ -135,11 +152,17 @@ button.mat-menu-item {
   right: 0
 }
 
-.login-overlay {
-  position: absolute;
-  top: 56px;
-  width: 100%;
-  height: calc( 100% - 56px);
-  background: white;
-  border: none;
+h1, h2, h3, h4, h5, h6 {
+  margin: 10px 0 0;
+}
+
+p {
+  margin: 5px 0;
+}
+
+footer {
+  margin-top: 50px;
+  background-color: mat-color($app-primary);
+  color: #ffffff;
+  padding: 50px;
 }

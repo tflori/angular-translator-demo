@@ -1,18 +1,22 @@
 <div id="app-wrapper">
 
-  <mat-sidenav-container>
-    <mat-sidenav #sidenav mode="over" class="app-sidenav">
+  <mat-toolbar color="primary" class="mat-elevation-z6" style="position: sticky; top: 0px;">
+    <button *ngIf="isScreenSmall()" mat-button class="toolbar-button" (click)="sidenav.toggle()">
+      <mat-icon *ngIf="sidenav.opened">chevron_left</mat-icon>
+      <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+    </button>
+    <span id="app-title">{{title}}</span>
+  </mat-toolbar>
+
+  <mat-sidenav-container style="height: calc(100% - 64px);">
+    <mat-sidenav #sidenav class="app-sidenav"
+                 [opened]="!isScreenSmall()"
+                 [mode]="isScreenSmall() ? 'over' : 'side'"
+                 fixedInViewport="true" fixedTopGap="64">
       <app-menu></app-menu>
     </mat-sidenav>
 
-    <mat-toolbar color="primary" class="mat-elevation-z6">
-      <button mat-button class="toolbar-button" (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span id="app-title">{{title}}</span>
-    </mat-toolbar>
-
-    <content>
+    <article>
       <button (click)="changeUser()">Change the user</button>
 
       <h2>Translator tests</h2>
@@ -43,18 +47,11 @@
 
       <h3 style="margin-top: 50px">Using pipe with object parameter</h3>
       <p>{{ 'FUN' | translate: { type: 'joke' } }}</p>
-    </content>
+    </article>
 
 
 
     <footer>
-      <p>
-        Language:
-        <select (change)="translatorContainer.language = $event.target.value">
-          <option value="en" [selected]="translatorContainer.language === 'en'">English</option>
-          <option value="de" [selected]="translatorContainer.language === 'de'">deutsch</option>
-        </select>
-      </p>
       <p>powered by angular@{{ version.full }}</p>
     </footer>
 

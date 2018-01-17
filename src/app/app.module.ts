@@ -1,3 +1,4 @@
+import { MediaMatcher } from '@angular/cdk/layout';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule, DatePipe } from '@angular/common';
@@ -61,7 +62,8 @@ export class MyTLH extends TranslateLogHandler {
   providers:    [
     { provide: TranslateLogHandler, useClass: MyTLH },
     TranslationLoaderCalendar,
-    RandomPipe
+    RandomPipe,
+    MediaMatcher
   ],
   bootstrap:    [AppComponent],
 })

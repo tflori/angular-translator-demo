@@ -1,4 +1,5 @@
-import { ApplicationRef, Component, Injector, VERSION } from '@angular/core';
+import { MediaMatcher } from '@angular/cdk/layout';
+import { ChangeDetectorRef, Component, Injector, VERSION } from '@angular/core';
 
 import {Translator, TranslatorContainer} from 'angular-translator';
 
@@ -27,7 +28,17 @@ export class AppComponent {
 
   public translations: object = {};
 
-  constructor(private translator: Translator, public translatorContainer: TranslatorContainer, private injector: Injector) {
+  private mobileQuery: MediaQueryList;
+  private _mobileQueryListener: () => void;
+
+  constructor(private translator: Translator,
+              public translatorContainer: TranslatorContainer,
+              private injector: Injector,
+              changeDetectorRef: ChangeDetectorRef,
+              media: MediaMatcher) {
+    this.mobileQuery = media.matchMedia('(max-width: 800px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
     const promises = [];
 
     // this comes from default module (assets/i18n/.json)
@@ -57,5 +68,9 @@ export class AppComponent {
     }
 
     this.user = AppComponent.users[p];
+  }
+
+  public isScreenSmall(): boolean {
+    return this.mobileQuery.matches;
   }
 }
