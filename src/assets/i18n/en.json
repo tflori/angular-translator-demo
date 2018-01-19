@@ -4,7 +4,7 @@
   "GREETING": "Hello {{ name }}!",
   "NEW_MESSAGES": "You have {{ count }} new message{{ count == 1 ? '' : 's' }}",
   "DATE_SHORT": "{{ (date.getMonth() + 1 < 10 ? '0' : '') + (date.getMonth() + 1) }} / {{ (date.getDate() < 10 ? '0' : '') + date.getDate() }} / {{ date.getFullYear() }}",
-  "LOGIN": "[[ GREETING : name ]] Your last login was on {{ lastLogin | date: 'MM/dd/y' }} at {{ lastLogin | date: 'jm' }} o'clock",
+  "LOGIN": "[[ GREETING : name ]] Your last login was on {{ lastLogin | date: 'MM/dd/y' }} at {{ lastLogin | date: 'h:mm a' }} o'clock",
   "FUN": [
     "{{ type | random: { joke: [",
       "'What\\'s the difference between snowmen and snowladies? Snowballs',",
