@@ -21,7 +21,7 @@
 
   <mat-sidenav-container>
     <mat-sidenav #sidenav class="app-sidenav"
-                 mode="side"
+                 [mode]="isScreenSmall() ? 'over' : 'side'"
                  [opened]="!isScreenSmall()"
                  fixedInViewport="true" [fixedTopGap]="isScreenSmall() ? 56 : 64">
       <app-menu></app-menu>
