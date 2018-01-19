@@ -59,7 +59,29 @@
     </article>
 
     <footer>
-      <p>powered by angular@{{ version.full }}</p>
+      <div class="projects">
+        <div class="this">
+          <h4>angular-translator-demo</h4>
+          <p>
+            This project is maintained by
+            <a class="grey-text text-lighten-4" href="https://github.com/tflori">tflori</a> and is demonstrating the use
+            of <a class="grey-text text-lighten-2" href="https://tflori.github.io/angular-translator">angular-translator</a>.
+            It is using angular version {{ version.full }}.
+          </p>
+        </div>
+        <div class="other">
+          <h4>Other projects</h4>
+          <ul>
+            <li><a href="https://tflori.github.io/orm/">tflori/orm</a></li>
+            <li><a class="grey-text text-lighten-2" href="https://tflori.github.io/verja">tflori/verja</a></li>
+            <li><a class="grey-text text-lighten-2" href="https://getopt-php.github.io/getopt-php">ulrichsg/getopt-php</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        © 2017 Thomas Flori
+        <a class="github-link" href="https://github.com/tflori/angular-translator-demo">View on <b>GitHub</b></a>
+      </div>
     </footer>
   </mat-sidenav-container>
 </div>

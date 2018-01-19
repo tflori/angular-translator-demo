@@ -2,8 +2,8 @@
 
 @include mat-core();
 
-$break-small: 396px;
-$break-large: 800px;
+$break-small: 600px;
+$break-large: 822px;
 $app-primary: mat-palette($mat-teal, 600);
 $app-secondary: mat-palette($mat-indigo, 500);
 $app-warn: mat-palette($mat-red, 500);
@@ -133,7 +133,60 @@ article {
 footer {
   background-color: mat-color($app-primary);
   color: #ffffff;
-  padding: 50px;
+  font-weight: 300;
+
+  a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  h4 {
+    font-size: 24px;
+    font-weight: 400;
+  }
+
+  ul, li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  ul {
+    margin-top: 5px;
+  }
+
+  .projects {
+    display: flex;
+    justify-content: space-between;
+    margin: 16px;
+
+    .this {
+      width: 60%;
+    }
+
+    .other {
+      width: 30%;
+    }
+
+    @media screen and (max-width: $break-small) {
+      & {
+        flex-direction: column;
+      }
+
+      .this, .other {
+        width: auto;
+      }
+    }
+  }
+
+  .footer-copyright {
+    background-color: rgba(51,51,51,0.08);
+    padding: 8px 16px;
+
+    .github-link {
+      float: right
+    }
+  }
 }
 
 .mat-drawer-container {

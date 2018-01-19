@@ -36,7 +36,7 @@ export class AppComponent {
               private injector: Injector,
               changeDetectorRef: ChangeDetectorRef,
               media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('(max-width: 800px)');
+    this.mobileQuery = media.matchMedia('(max-width: 822px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
     const promises = [];
