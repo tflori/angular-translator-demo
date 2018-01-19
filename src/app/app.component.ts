@@ -60,8 +60,8 @@ export class AppComponent {
     });
   }
 
-  public changeUser() {
-    let p: number = AppComponent.users.indexOf(this.user) + 1;
+  public changeUser(p?: number) {
+    p = p !== undefined ? p : AppComponent.users.indexOf(this.user) + 1;
 
     if (p === AppComponent.users.length) {
       p = 0;

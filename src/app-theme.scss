@@ -3,7 +3,7 @@
 @include mat-core();
 
 $break-small: 396px;
-$break-large: 600px;
+$break-large: 800px;
 $app-primary: mat-palette($mat-teal, 600);
 $app-secondary: mat-palette($mat-indigo, 500);
 $app-warn: mat-palette($mat-red, 500);
@@ -13,38 +13,31 @@ $app-theme: mat-light-theme($app-primary, $app-secondary, $app-warn);
 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-html, body, app-root, mat-sidenav-container { height: 100%; }
+html, body, app-root, mat-sidenav-container, #app-wrapper { height: 100%; }
 
-.mat-sidenav-container {
-  background-color: #fafafa;
-}
+$app-bar-small: 56px;
+$app-bar-large: 64px;
 
-$app-toolbar-height: 56px;
-#app-wrapper {
-  height: 100%;
-}
-
-#content-wrapper {
-  padding: 20px 70px 50px;
-}
-
-#content {
-  max-width: 700px;
-}
-
-#app-toolbar {
-  position: relative;
+#app-bar {
   z-index: 10;
+  position: fixed;
+  top: 0;
 
   &.mat-toolbar {
-    min-height: $app-toolbar-height;
+    min-height: $app-bar-small;
   }
 
-  .mat-toolbar-row {
-    height: $app-toolbar-height;
+  &.mat-toolbar-single-row {
+    height: $app-bar-large;
 
     > mat-icon {
       margin-right: 1rem
+    }
+  }
+
+  @media screen and (max-width: $break-large) {
+    &.mat-toolbar-single-row {
+      height: $app-bar-small;
     }
   }
 }
@@ -54,26 +47,11 @@ $app-toolbar-height: 56px;
 }
 
 .mat-button.toolbar-button {
-  height: 64px;
-  min-width: 64px;
+  height: $app-bar-large;
+  min-width: $app-bar-large;
 
   &:first-child {
     margin-left: -16px;
-  }
-}
-
-.mat-toolbar {
-  small {
-    padding: 0 0.5rem;
-    position: relative;
-    top: 2px;
-    width: auto;
-  }
-
-  @media screen and (max-width: $break-large) {
-    small {
-      display: none;
-    }
   }
 }
 
@@ -82,38 +60,26 @@ $app-toolbar-height: 56px;
   margin-left: 1rem;
 }
 
+.mat-sidenav-container {
+  height: calc( 100% - #{$app-bar-large} );
+  top: $app-bar-large;
+}
+
 @media screen and (max-width: $break-large) {
   .mat-button.toolbar-button {
-    height: 56px;
-    min-width: 56px;
+    height: $app-bar-small;
+    min-width: $app-bar-small;
   }
 
-  #content-wrapper {
-    padding: 20px 20px;
+  .mat-sidenav-container {
+    height: calc( 100% - #{$app-bar-small} );
+    top: $app-bar-small;
   }
 }
 
 mat-sidenav {
   width: 18rem;
 }
-
-//.mat-menu-item {
-//  cursor: pointer;
-//  outline: 0;
-//  border: none;
-//  white-space: nowrap;
-//  overflow: hidden;
-//  text-overflow: ellipsis;
-//  display: block;
-//  line-height: 48px;
-//  height: 48px;
-//  padding: 0 16px;
-//  font-size: 16px;
-//  font-family: Roboto, "Helvetica Neue", sans-serif;
-//  text-align: left;
-//  text-decoration: none;
-//  position: relative
-//}
 
 .mat-menu-item[disabled] {
   cursor: default
@@ -160,9 +126,26 @@ p {
   margin: 5px 0;
 }
 
+article {
+  padding: 16px;
+}
+
 footer {
-  margin-top: 50px;
   background-color: mat-color($app-primary);
   color: #ffffff;
   padding: 50px;
+}
+
+.mat-drawer-container {
+  background: transparent;
+}
+
+.mat-drawer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.app-sidenav {
+  background: #f0f0f0;
 }

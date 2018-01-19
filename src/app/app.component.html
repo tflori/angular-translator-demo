@@ -1,24 +1,33 @@
 <div id="app-wrapper">
 
-  <mat-toolbar color="primary" class="mat-elevation-z6" style="position: sticky; top: 0px;">
-    <button *ngIf="isScreenSmall()" mat-button class="toolbar-button" (click)="sidenav.toggle()">
+  <mat-toolbar id="app-bar" color="primary" class="mat-elevation-z6">
+    <button mat-button class="toolbar-button" (click)="sidenav.toggle()">
       <mat-icon *ngIf="sidenav.opened">chevron_left</mat-icon>
       <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
     </button>
+
     <span id="app-title">{{title}}</span>
+
+    <span class="toolbar-spacer"></span>
+
+    <mat-menu #userMenu="matMenu" [overlapTrigger]="false" class="sidenav">
+      <button mat-menu-item (click)="changeUser(0)">John Doe</button>
+      <button mat-menu-item (click)="changeUser(1)">Max Mustermann</button>
+    </mat-menu>
+    <button mat-button class="toolbar-button" [matMenuTriggerFor]="userMenu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
   </mat-toolbar>
 
-  <mat-sidenav-container style="height: calc(100% - 64px);">
+  <mat-sidenav-container>
     <mat-sidenav #sidenav class="app-sidenav"
+                 mode="side"
                  [opened]="!isScreenSmall()"
-                 [mode]="isScreenSmall() ? 'over' : 'side'"
-                 fixedInViewport="true" fixedTopGap="64">
+                 fixedInViewport="true" [fixedTopGap]="isScreenSmall() ? 56 : 64">
       <app-menu></app-menu>
     </mat-sidenav>
 
     <article>
-      <button (click)="changeUser()">Change the user</button>
-
       <h2>Translator tests</h2>
       <h3>Using pipe</h3>
       <h4>without params</h4>
@@ -49,11 +58,8 @@
       <p>{{ 'FUN' | translate: { type: 'joke' } }}</p>
     </article>
 
-
-
     <footer>
       <p>powered by angular@{{ version.full }}</p>
     </footer>
-
   </mat-sidenav-container>
 </div>
