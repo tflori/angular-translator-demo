@@ -1,5 +1,24 @@
 <nav>
-  <div translate="HOME"></div>
-  <div translate="ADMIN"></div>
-  <div translate="LOGOUT"></div>
+  <mat-menu #languageMenu="matMenu" [overlapTrigger]="false" class="sidenav">
+    <button mat-menu-item (click)="setLanguage('de')">Deutsch</button>
+    <button mat-menu-item (click)="setLanguage('en')">English</button>
+  </mat-menu>
+
+  <button mat-menu-item>
+    <mat-icon>home</mat-icon>
+    <span translate="HOME"></span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>settings</mat-icon>
+    <span translate="ADMIN"></span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>highlight_off</mat-icon>
+    <span translate="LOGOUT"></span>
+  </button>
+  <button mat-menu-item [matMenuTriggerFor]="languageMenu">
+    <mat-icon>translate</mat-icon>
+    <span>{{ 'DISPLAY_LANGUAGE' | translate }}</span>
+  </button>
+
 </nav>

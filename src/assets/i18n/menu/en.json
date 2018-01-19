@@ -1,5 +1,6 @@
 {
   "HOME": "Home",
   "ADMIN": "Administration",
-  "LOGOUT": "logout"
+  "LOGOUT": "logout",
+  "DISPLAY_LANGUAGE": "Display Language"
 }

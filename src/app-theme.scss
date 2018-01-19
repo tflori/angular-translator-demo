@@ -1,0 +1,151 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$break-small: 396px;
+$break-large: 800px;
+$app-primary: mat-palette($mat-teal, 600);
+$app-secondary: mat-palette($mat-indigo, 500);
+$app-warn: mat-palette($mat-red, 500);
+
+$app-theme: mat-light-theme($app-primary, $app-secondary, $app-warn);
+@include angular-material-theme($app-theme);
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body, app-root, mat-sidenav-container, #app-wrapper { height: 100%; }
+
+$app-bar-small: 56px;
+$app-bar-large: 64px;
+
+#app-bar {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+
+  &.mat-toolbar {
+    min-height: $app-bar-small;
+  }
+
+  &.mat-toolbar-single-row {
+    height: $app-bar-large;
+
+    > mat-icon {
+      margin-right: 1rem
+    }
+  }
+
+  @media screen and (max-width: $break-large) {
+    &.mat-toolbar-single-row {
+      height: $app-bar-small;
+    }
+  }
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-button.toolbar-button {
+  height: $app-bar-large;
+  min-width: $app-bar-large;
+
+  &:first-child {
+    margin-left: -16px;
+  }
+}
+
+.mat-menu-panel.sidenav {
+  min-width: 17rem;
+  margin-left: 1rem;
+}
+
+.mat-sidenav-container {
+  height: calc( 100% - #{$app-bar-large} );
+  top: $app-bar-large;
+}
+
+@media screen and (max-width: $break-large) {
+  .mat-button.toolbar-button {
+    height: $app-bar-small;
+    min-width: $app-bar-small;
+  }
+
+  .mat-sidenav-container {
+    height: calc( 100% - #{$app-bar-small} );
+    top: $app-bar-small;
+  }
+}
+
+mat-sidenav {
+  width: 18rem;
+}
+
+.mat-menu-item[disabled] {
+  cursor: default
+}
+
+.mat-menu-item .mat-icon {
+  margin-right: 16px
+}
+
+nav .mat-menu-item {
+  user-select: none;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+  text-align: left;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 16px;
+  text-decoration: none;
+  position: relative;
+}
+
+button.mat-menu-item {
+  width: 100%
+}
+
+.mat-menu-ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 10px 0 0;
+}
+
+p {
+  margin: 5px 0;
+}
+
+article {
+  padding: 16px;
+}
+
+footer {
+  background-color: mat-color($app-primary);
+  color: #ffffff;
+  padding: 50px;
+}
+
+.mat-drawer-container {
+  background: transparent;
+}
+
+.mat-drawer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.app-sidenav {
+  background: #f0f0f0;
+}
