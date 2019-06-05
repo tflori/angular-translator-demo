@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule, DatePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import * as md from '@angular/material';
 
 import { TranslateLogHandler, TranslatorModule } from 'angular-translator';
@@ -40,7 +40,7 @@ export class MyTLH extends TranslateLogHandler {
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     TranslatorModule.forRoot({
       providedLanguages: ['de', 'en'],
       defaultLanguage:   'en',
