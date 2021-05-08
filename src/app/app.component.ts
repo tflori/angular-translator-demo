@@ -1,14 +1,22 @@
-import { MediaMatcher } from '@angular/cdk/layout';
-import { ChangeDetectorRef, Component, Injector, VERSION } from '@angular/core';
+import {BreakpointObserver} from '@angular/cdk/layout';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  Injector,
+  VERSION,
+  ViewChild
+} from '@angular/core';
 
 import {Translator, TranslatorContainer} from 'angular-translator';
+import {MatSidenav} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   private static users = [
     {
       name: 'John Doe',
@@ -20,6 +28,8 @@ export class AppComponent {
     }
   ];
 
+  @ViewChild('sidenav', {static: false}) sidenav: MatSidenav;
+
   public title = 'Loading...';
 
   public user = AppComponent.users[0];
@@ -28,17 +38,15 @@ export class AppComponent {
 
   public translations: object = {};
 
-  private mobileQuery: MediaQueryList;
-  private _mobileQueryListener: () => void;
+  public isSmallScreen = true;
 
-  constructor(private translator: Translator,
+  public isMenuOpened = false;
+
+  constructor(public translator: Translator,
               public translatorContainer: TranslatorContainer,
               private injector: Injector,
-              changeDetectorRef: ChangeDetectorRef,
-              media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('(max-width: 822px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
+              breakpointObserver: BreakpointObserver,
+              private cdr: ChangeDetectorRef) {
     const promises = [];
 
     // this comes from default module (assets/i18n/.json)
@@ -58,6 +66,15 @@ export class AppComponent {
     Promise.all(promises).then(() => {
       console.log(this.translations);
     });
+
+    // this.isSmallScreen = breakpointObserver.isMatched('(max-width: 822px)');
+    // cdr.detectChanges();
+    breakpointObserver.observe(['(max-width: 822px)']).subscribe(bps => this.isSmallScreen = bps.matches);
+  }
+
+  ngAfterViewInit(): void {
+    this.sidenav.openedStart.subscribe(() => this.isMenuOpened = true);
+    this.sidenav.closedStart.subscribe(() => this.isMenuOpened = false);
   }
 
   public changeUser(p?: number) {
@@ -71,6 +88,6 @@ export class AppComponent {
   }
 
   public isScreenSmall(): boolean {
-    return this.mobileQuery.matches;
+    return this.isSmallScreen;
   }
 }

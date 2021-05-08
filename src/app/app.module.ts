@@ -55,9 +55,9 @@ export class MyTLH extends TranslateLogHandler {
     md.MatToolbarModule,
     md.MatButtonModule,
     md.MatSidenavModule,
-    md.MatIconModule,
     md.MatInputModule,
-    md.MatMenuModule
+    md.MatMenuModule,
+    md.MatIconModule,
   ],
   providers:    [
     { provide: TranslateLogHandler, useClass: MyTLH },

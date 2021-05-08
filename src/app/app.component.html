@@ -2,8 +2,8 @@
 
   <mat-toolbar id="app-bar" color="primary" class="mat-elevation-z6">
     <button mat-button class="toolbar-button" (click)="sidenav.toggle()">
-      <mat-icon *ngIf="sidenav.opened">chevron_left</mat-icon>
-      <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+      <mat-icon *ngIf="isMenuOpened">chevron_left</mat-icon>
+      <mat-icon *ngIf="!isMenuOpened">menu</mat-icon>
     </button>
 
     <span id="app-title">{{title}}</span>
